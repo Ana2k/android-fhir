@@ -42,9 +42,10 @@ class PatientListActivity() : AppCompatActivity() {
   private lateinit var fhirEngine: FhirEngine
   private lateinit var patientListViewModel: PatientListViewModel
   private lateinit var searchView: SearchView
+  private val TAG = this.javaClass.name
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    Log.d("PatientListActivity", "onCreate() called")
+    Log.d(TAG, "onCreate() called")
     setContentView(R.layout.activity_patient_list)
 
     Sync.periodicSync<FhirPeriodicSyncWorker>(
@@ -72,7 +73,7 @@ class PatientListActivity() : AppCompatActivity() {
     patientListViewModel.liveSearchedPatients.observe(
       this,
       {
-        Log.d("PatientListActivity", "Submitting ${it.count()} patient records")
+        Log.d(TAG, "Submitting ${it.count()} patient records")
         adapter.submitList(it)
       }
     )

@@ -26,9 +26,9 @@ import com.google.android.fhir.db.impl.entities.LocalChangeEntity
 import com.google.android.fhir.db.impl.entities.LocalChangeEntity.Type
 import com.google.android.fhir.logicalId
 import com.google.android.fhir.toTimeZoneString
-import java.util.Date
 import org.hl7.fhir.r4.model.Resource
 import org.hl7.fhir.r4.model.ResourceType
+import java.util.*
 
 /**
  * Dao for local changes made to a resource. One row in LocalChangeEntity corresponds to one change
@@ -40,6 +40,7 @@ import org.hl7.fhir.r4.model.ResourceType
 internal abstract class LocalChangeDao {
 
   lateinit var iParser: IParser
+  private val TAG = this.javaClass.name
 
   @Insert abstract fun addLocalChange(localChangeEntity: LocalChangeEntity)
 
@@ -81,7 +82,7 @@ internal abstract class LocalChangeDao {
     val jsonDiff = LocalChangeUtils.diff(iParser, oldResource, resource)
     if (jsonDiff.length() == 0) {
       Log.i(
-        "LocalChangeDao",
+        TAG,
         "New resource ${resource.resourceType}/${resource.id} is same as old resource. " +
           "Not inserting UPDATE LocalChange."
       )
