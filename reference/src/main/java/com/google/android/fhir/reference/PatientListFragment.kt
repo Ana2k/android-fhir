@@ -29,8 +29,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.fhir.FhirEngine
 import com.google.android.fhir.reference.PatientListViewModel.PatientListViewModelFactory
+import com.google.android.fhir.reference.data.FhirPeriodicSyncWorker
 import com.google.android.fhir.reference.databinding.FragmentPatientListBinding
 import com.google.android.fhir.reference.ips.IPSCompositionListActivity
+import com.google.android.fhir.sync.Sync
+import com.google.android.material.snackbar.Snackbar
 
 class PatientListFragment : Fragment() {
   private lateinit var fhirEngine: FhirEngine
@@ -115,11 +118,37 @@ class PatientListFragment : Fragment() {
       )
 
     binding.apply { addPatient.setOnClickListener { onAddPatientClick() } }
+    setHasOptionsMenu(true)
   }
 
   override fun onDestroyView() {
     super.onDestroyView()
     _binding = null
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    inflater.inflate(R.menu.list_options_menu, menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      R.id.sync_resources -> {
+        Sync.oneTimeSync<FhirPeriodicSyncWorker>(requireContext())
+        Snackbar.make(
+            binding.patientListContainer.patientList,
+            R.string.message_syncing,
+            Snackbar.LENGTH_LONG
+          )
+          .show()
+        true
+      }
+      R.id.ips_activity_menu-> {
+        val intent = Intent(requireContext(), IPSCompositionListActivity::class.java)
+        requireContext().startActivity(intent)
+        return true
+      }
+      else -> false
+    }
   }
 
   private fun onPatientItemClicked(patientItem: PatientListViewModel.PatientItem) {
@@ -130,21 +159,5 @@ class PatientListFragment : Fragment() {
   private fun onAddPatientClick() {
     findNavController()
       .navigate(PatientListFragmentDirections.actionPatientListToAddPatientFragment())
-  }
-
-  override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-    super.onCreateOptionsMenu(menu, inflater)
-    inflater.inflate(R.menu.overflow_menu,menu)
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item.itemId) {
-        R.id.ips_activity_menu-> {
-      val intent = Intent(requireContext(), IPSCompositionListActivity::class.java)
-      requireContext().startActivity(intent)
-          return true
-    }
-    }
-    return super.onOptionsItemSelected(item)
   }
 }
