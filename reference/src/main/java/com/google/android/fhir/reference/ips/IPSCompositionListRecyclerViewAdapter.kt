@@ -1,32 +1,37 @@
 package com.google.android.fhir.reference.ips
 
-import android.content.Context
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.fhir.reference.R
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import org.hl7.fhir.r4.model.Composition
 
-class IPSCompositionListRecyclerViewAdapter(val ipsCompositionList: ArrayList<Composition>, val context: Context) :
-    RecyclerView.Adapter<IPSCompositionListViewHolder>() {
+class IPSCompositionListRecyclerViewAdapter:
+    ListAdapter<IPSCompositionListViewModel, IPSCompositionListViewHolder>(IPSCompositionListDiffCallBack()) {
+    //expects an item here. so we need to do some item stuff with viewmodel
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
     ): IPSCompositionListViewHolder {
-        return IPSCompositionListViewHolder(LayoutInflater.from(context).inflate(R.layout.ips_composition_list_item,parent,false))
+        return IPSCompositionListViewHolder.from(parent)
+    }
+
+    class IPSCompositionListDiffCallBack :
+        DiffUtil.ItemCallback<Composition>(){
+        override fun areItemsTheSame(oldItem: Composition, newItem: Composition):
+                Boolean = oldItem.id == newItem.id
+            //oldItem--- iCviewModel.composition object?
+            //same for --- icViewModel.composition obj?
+
+        override fun areContentsTheSame(oldItem: Composition, newItem: Composition): Boolean = oldItem.id == newItem.id
     }
 
     override fun onBindViewHolder(
         holder: IPSCompositionListViewHolder,
         position: Int,
     ) {
-        val toShow = ipsCompositionList.get(position)
-        holder.title.text  = toShow.title
-        holder.description.text = toShow.date.toString()
-    }
+        val item = currentList[position]
+        holder.bindTo(item)
 
-    override fun getItemCount(): Int {
-        return ipsCompositionList.size
     }
 }
