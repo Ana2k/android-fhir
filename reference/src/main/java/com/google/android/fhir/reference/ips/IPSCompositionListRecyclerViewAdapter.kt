@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import org.hl7.fhir.r4.model.Composition
 
-class IPSCompositionListRecyclerViewAdapter:
-    ListAdapter<IPSCompositionListViewModel, IPSCompositionListViewHolder>(IPSCompositionListDiffCallBack()) {
+class IPSCompositionListRecyclerViewAdapter(private val mCompositionList: ArrayList<Composition>):
+    ListAdapter<Composition, IPSCompositionListViewHolder>(IPSCompositionListDiffCallBack()) {
     //expects an item here. so we need to do some item stuff with viewmodel
 
     override fun onCreateViewHolder(

@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.fhir.reference.databinding.IpsCompositionListItemViewBinding
+import org.hl7.fhir.r4.model.Composition
 
-class IPSCompositionListViewHolder(private val binding: IpsCompositionListItemViewBinding):
+class IPSCompositionListViewHolder(val binding: IpsCompositionListItemViewBinding):
     RecyclerView.ViewHolder(binding.root){
     companion object{
         fun from(parent: ViewGroup): IPSCompositionListViewHolder{
@@ -20,7 +21,7 @@ class IPSCompositionListViewHolder(private val binding: IpsCompositionListItemVi
 
     //TODO() -- ClickListener in bindTo and as param
 
-    fun bindTo(item: IPSCompositionListViewModel) {
+    fun bindTo(item: Composition) {
         this.titleView.text = item.title
         this.descriptionView.text = item.date.toString()
     }
