@@ -18,7 +18,7 @@ class IPSCompositionListFragment : Fragment() {
     get() = _binding!!
 
     private lateinit var mCompositionList: ArrayList<Composition>
-    private var mRecyclerView: RecyclerView?= null
+    private lateinit var mRecyclerView: RecyclerView
     private lateinit var mListViewModel: IPSCompositionListViewModel
 
 
@@ -44,10 +44,12 @@ class IPSCompositionListFragment : Fragment() {
 
         Log.d("IPSFRAG list", mCompositionList.toString())
 
-        val mRecyclerView = binding.ipsCompositionListRecyclerView
+        mRecyclerView = binding.ipsCompositionListRecyclerView
         this.mRecyclerView?.setHasFixedSize(true)
 
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        Log.d("IPSFRAG layout manager", mRecyclerView.layoutManager.toString())
+
         val adapter = IPSCompositionListRecyclerViewAdapter()
 
         mRecyclerView.adapter =adapter

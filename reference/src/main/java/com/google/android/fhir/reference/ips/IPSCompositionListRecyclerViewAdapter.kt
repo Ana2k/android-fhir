@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import org.hl7.fhir.r4.model.Composition
 
-class IPSCompositionListRecyclerViewAdapter():
+class IPSCompositionListRecyclerViewAdapter :
     ListAdapter<Composition, IPSCompositionListViewHolder>(IPSCompositionListDiffCallBack()) {
     //expects an item here. so we need to do some item stuff with viewmodel
 
@@ -14,18 +14,23 @@ class IPSCompositionListRecyclerViewAdapter():
         parent: ViewGroup,
         viewType: Int,
     ): IPSCompositionListViewHolder {
-        Log.d("IPSADAPTER","")
+        Log.d("IPSADAPTER","inside onCreateViewHolder")
         return IPSCompositionListViewHolder.from(parent)
     }
 
     class IPSCompositionListDiffCallBack :
         DiffUtil.ItemCallback<Composition>(){
-        override fun areItemsTheSame(oldItem: Composition, newItem: Composition):
-                Boolean = oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: Composition, newItem: Composition): Boolean{
+            Log.d("IPSADAPTER",oldItem.toString()+"oldItem"+" newITem"+newItem.toString())
+            return  oldItem.id == newItem.id
+        }
             //oldItem--- iCviewModel.composition object?
             //same for --- icViewModel.composition obj?
 
-        override fun areContentsTheSame(oldItem: Composition, newItem: Composition): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Composition, newItem: Composition): Boolean {
+            Log.d("IPSADAPTER",oldItem.toString()+"oldItem"+" newITem"+newItem.toString())
+           return oldItem.id == newItem.id
+        }
     }
 
     override fun onBindViewHolder(
@@ -33,6 +38,7 @@ class IPSCompositionListRecyclerViewAdapter():
         position: Int,
     ) {
         val item = currentList[position]
+        Log.d("IPSADAPTER",item.toString())
         holder.bindTo(item)
 
     }

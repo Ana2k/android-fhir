@@ -1,5 +1,6 @@
 package com.google.android.fhir.reference.ips
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ class IPSCompositionListViewHolder(val binding: IpsCompositionListItemViewBindin
         fun from(parent: ViewGroup): IPSCompositionListViewHolder{
             val inflater = LayoutInflater.from(parent.context)
             val binding = IpsCompositionListItemViewBinding.inflate(inflater,parent,false)
+            Log.d("IPSVIEWHOLDER",inflater.toString()+"inflater"+binding.toString()+"binding")
             return IPSCompositionListViewHolder(binding)
         }
     }
@@ -24,6 +26,7 @@ class IPSCompositionListViewHolder(val binding: IpsCompositionListItemViewBindin
     fun bindTo(item: Composition) {
         this.titleView.text = item.title
         this.descriptionView.text = item.date.toString()
+        Log.d("IPSVIEWHOLDER",item.title.toString()+"item.title"+descriptionView.toString()+"descriptionView")
     }
 
 }
