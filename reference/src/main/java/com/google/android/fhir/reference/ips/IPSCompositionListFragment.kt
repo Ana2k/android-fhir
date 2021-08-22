@@ -1,6 +1,7 @@
 package com.google.android.fhir.reference.ips
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -24,6 +25,7 @@ class IPSCompositionListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = IpsCompositionListViewBinding.inflate(inflater, container, false)
         val view = binding.root
+        Log.d("IPSFRAG","onCreateView--Fragment")
 
 
         return view
@@ -40,6 +42,8 @@ class IPSCompositionListFragment : Fragment() {
         mCompositionList = mListViewModel.mCompositionList.value as ArrayList<Composition>
 
 
+        Log.d("IPSFRAG list", mCompositionList.toString())
+
         val mRecyclerView = binding.ipsCompositionListRecyclerView
         this.mRecyclerView?.setHasFixedSize(true)
 
@@ -49,8 +53,13 @@ class IPSCompositionListFragment : Fragment() {
         mRecyclerView.adapter =adapter
 
         mListViewModel.mCompositionList.observe(viewLifecycleOwner, Observer {
+            Log.d("IPSFRAG","Observer--Fragment{}")
             adapter.submitList(it)
+            Log.d("IPSFRAG it",it.toString())
         })
+
+        Log.d("IPSFRAG Viewmodel", mListViewModel.toString())
+        Log.d("IPSFRAG adapter",adapter.toString())
 
 
     }

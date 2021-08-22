@@ -1,5 +1,6 @@
 package com.google.android.fhir.reference.ips
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -13,6 +14,7 @@ class IPSCompositionListRecyclerViewAdapter():
         parent: ViewGroup,
         viewType: Int,
     ): IPSCompositionListViewHolder {
+        Log.d("IPSADAPTER","")
         return IPSCompositionListViewHolder.from(parent)
     }
 
