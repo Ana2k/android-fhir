@@ -13,7 +13,6 @@ class IPSCompositionListViewHolder(val binding: IpsCompositionListItemViewBindin
         fun from(parent: ViewGroup): IPSCompositionListViewHolder{
             val inflater = LayoutInflater.from(parent.context)
             val binding = IpsCompositionListItemViewBinding.inflate(inflater,parent,false)
-            Log.d("IPSVIEWHOLDER",inflater.toString()+"inflater"+binding.toString()+"binding")
             return IPSCompositionListViewHolder(binding)
         }
     }
@@ -21,12 +20,12 @@ class IPSCompositionListViewHolder(val binding: IpsCompositionListItemViewBindin
     private val titleView = binding.listTitle
     private val descriptionView = binding.listDescription
 
-    //TODO() -- ClickListener in bindTo and as param
+    fun bindTo(ipsItem: Composition, onIPSItemClicked: (Composition) -> Unit) {
+        this.titleView.text = ipsItem.title
+        this.descriptionView.text = ipsItem.date.toString()
+        this.itemView.setOnClickListener { onIPSItemClicked(ipsItem) }
 
-    fun bindTo(item: Composition) {
-        this.titleView.text = item.title
-        this.descriptionView.text = item.date.toString()
-        Log.d("IPSVIEWHOLDER",item.title.toString()+"item.title"+descriptionView.toString()+"descriptionView")
+
     }
 
 }

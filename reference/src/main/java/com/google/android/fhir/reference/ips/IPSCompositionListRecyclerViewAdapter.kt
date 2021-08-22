@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import org.hl7.fhir.r4.model.Composition
 
-class IPSCompositionListRecyclerViewAdapter :
+class IPSCompositionListRecyclerViewAdapter(private val onIPSItemClicked: (Composition)->Unit) :
     ListAdapter<Composition, IPSCompositionListViewHolder>(IPSCompositionListDiffCallBack()) {
     //expects an item here. so we need to do some item stuff with viewmodel
 
@@ -39,7 +39,8 @@ class IPSCompositionListRecyclerViewAdapter :
     ) {
         val item = currentList[position]
         Log.d("IPSADAPTER",item.toString())
-        holder.bindTo(item)
+        holder.bindTo(item,onIPSItemClicked)
 
     }
 }
+

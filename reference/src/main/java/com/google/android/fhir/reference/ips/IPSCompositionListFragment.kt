@@ -3,11 +3,13 @@ package com.google.android.fhir.reference.ips
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.fhir.reference.PatientListViewModel
 import com.google.android.fhir.reference.databinding.IpsCompositionListViewBinding
 import org.hl7.fhir.r4.model.Composition
 import kotlin.collections.ArrayList
@@ -25,8 +27,6 @@ class IPSCompositionListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = IpsCompositionListViewBinding.inflate(inflater, container, false)
         val view = binding.root
-        Log.d("IPSFRAG","onCreateView--Fragment")
-
 
         return view
     }
@@ -42,29 +42,27 @@ class IPSCompositionListFragment : Fragment() {
         mCompositionList = mListViewModel.mCompositionList.value as ArrayList<Composition>
 
 
-        Log.d("IPSFRAG list", mCompositionList.toString())
-
         mRecyclerView = binding.ipsCompositionListRecyclerView
-        this.mRecyclerView?.setHasFixedSize(true)
+        this.mRecyclerView.setHasFixedSize(true)
 
         mRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-        Log.d("IPSFRAG layout manager", mRecyclerView.layoutManager.toString())
 
-        val adapter = IPSCompositionListRecyclerViewAdapter()
+        val adapter = IPSCompositionListRecyclerViewAdapter(this::onIPSCompositionItemClicked)
 
         mRecyclerView.adapter =adapter
 
         mListViewModel.mCompositionList.observe(viewLifecycleOwner, Observer {
-            Log.d("IPSFRAG","Observer--Fragment{}")
             adapter.submitList(it)
-            Log.d("IPSFRAG it",it.toString())
         })
 
-        Log.d("IPSFRAG Viewmodel", mListViewModel.toString())
-        Log.d("IPSFRAG adapter",adapter.toString())
 
 
     }
 
+    private fun onIPSCompositionItemClicked(ipsItem: Composition) {
+        Toast.makeText(context,"Item clicked ips composition"+ipsItem+"item sent", Toast.LENGTH_SHORT).show()
+    //if works add navigation
+    }
 
-}
+
+    }
