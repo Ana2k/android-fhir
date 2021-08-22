@@ -25,7 +25,7 @@ android {
     }
   }
   buildFeatures {
-    dataBinding true
+    dataBinding  = true
     viewBinding = true }
   compileOptions {
     // Flag to enable support for the new language APIs

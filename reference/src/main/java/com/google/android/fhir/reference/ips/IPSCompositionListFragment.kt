@@ -3,6 +3,7 @@ package com.google.android.fhir.reference.ips
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ class IPSCompositionListFragment : Fragment() {
 
     private lateinit var mCompositionList: ArrayList<Composition>
     private var mRecyclerView: RecyclerView?= null
-    private var mListViewModel: IPSCompositionListViewModel?=null
+    private lateinit var mListViewModel: IPSCompositionListViewModel
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,16 +35,23 @@ class IPSCompositionListFragment : Fragment() {
         val application = requireNotNull(this.activity).application
 
         val viewModelFactory = IPSCompositionListViewModel.IPSCompositionViewModelFactory(application)
-        val mListViewModel = ViewModelProvider(this,viewModelFactory).get(IPSCompositionListViewModel::class.java)
+        mListViewModel = ViewModelProvider(this,viewModelFactory).get(IPSCompositionListViewModel::class.java)
 
-        mCompositionList = mListViewModel?.mCompositionList?.value as ArrayList<Composition>
+        mCompositionList = mListViewModel.mCompositionList.value as ArrayList<Composition>
 
 
         val mRecyclerView = binding.ipsCompositionListRecyclerView
         this.mRecyclerView?.setHasFixedSize(true)
 
         mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.adapter = IPSCompositionListRecyclerViewAdapter(mCompositionList)
+        val adapter = IPSCompositionListRecyclerViewAdapter()
+
+        mRecyclerView.adapter =adapter
+
+        mListViewModel.mCompositionList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+
 
     }
 
