@@ -9,6 +9,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
 import org.hl7.fhir.r4.model.Composition
+import org.hl7.fhir.r4.model.DateTimeType
+import org.hl7.fhir.r4.model.Identifier
+import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator
 import java.util.Date
 import kotlin.collections.ArrayList
 
