@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.fhir.reference.PatientListFragmentDirections
 import com.google.android.fhir.reference.PatientListViewModel
 import com.google.android.fhir.reference.databinding.IpsCompositionListViewBinding
 import org.hl7.fhir.r4.model.Composition
@@ -62,6 +64,8 @@ class IPSCompositionListFragment : Fragment() {
     private fun onIPSCompositionItemClicked(ipsItem: Composition) {
         Toast.makeText(context,"Item clicked ips composition"+ipsItem+"item sent", Toast.LENGTH_SHORT).show()
     //if works add navigation
+        findNavController()
+            .navigate(IPSCompositionListFragmentDirections.navigateToIpsDetailFragment())
     }
 
 

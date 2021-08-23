@@ -3,11 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ips_nav_graph"
-    app:startDestination="@id/ips_list_fragment">
+    app:startDestination="@id/ips_list">
 
     <fragment
-        android:id="@+id/ips_list_fragment"
+        android:id="@+id/ips_list"
         android:name="com.google.android.fhir.reference.ips.IPSCompositionListFragment"
         android:label="fragment_ips_list"
-        tools:layout="@layout/ips_composition_list_view" />
+        tools:layout="@layout/ips_composition_list_view" >
+    <action
+        android:id= "@+id/navigate_to_ips_detail_fragment"
+        app:destination="@id/ips_details"
+        />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ips_details"
+        android:label="IPS Details"
+        android:name="com.google.android.fhir.reference.ips.IPSCompositionDetailsFragment"
+        tools:layout="@layout/ips_composition_detail_view"/>
 </navigation>
