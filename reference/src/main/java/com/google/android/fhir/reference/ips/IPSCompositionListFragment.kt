@@ -65,7 +65,7 @@ class IPSCompositionListFragment : Fragment() {
         Toast.makeText(context,"Item clicked ips composition"+ipsItem+"item sent", Toast.LENGTH_SHORT).show()
     //if works add navigation
         findNavController()
-            .navigate(IPSCompositionListFragmentDirections.navigateToIpsDetailFragment())
+            .navigate(IPSCompositionListFragmentDirections.navigateToIpsDetailFragment(ipsItem))
     }
 
 
