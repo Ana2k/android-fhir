@@ -14,12 +14,13 @@
         android:id= "@+id/navigate_to_ips_detail_fragment"
         app:destination="@id/ips_details"
         />
-        <argument android:name=""
     </fragment>
 
     <fragment
         android:id="@+id/ips_details"
         android:label="IPS Details"
         android:name="com.google.android.fhir.reference.ips.IPSCompositionDetailsFragment"
-        tools:layout="@layout/ips_composition_detail_view"/>
+        tools:layout="@layout/ips_composition_detail_view">
+    <argument android:name="ips_patient_detail" app:argType="org.hl7.fhir.r4.model.Composition" />
+    </fragment>
 </navigation>
