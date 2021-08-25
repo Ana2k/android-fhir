@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.fhir.reference.PatientDetailsFragmentArgs
 import com.google.android.fhir.reference.databinding.IpsCompositionDetailViewBinding
+import org.hl7.fhir.r4.model.Composition
 
 class IPSCompositionDetailsFragment: Fragment() {
     private var _binding: IpsCompositionDetailViewBinding? = null
@@ -29,12 +30,20 @@ class IPSCompositionDetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val arguments = IPSCompositionDetailsFragmentArgs.fromBundle(arguments as Bundle)
+        val item = arguments.ipsPatientDetail as Composition
         //extract the argument files.
         //make a textview. text
         //then show that in those
-        //from android docs:-
-        val textView = binding.detailsTextView
-        val arguments = IPSCompositionDetailsFragmentArgs.fromBundle(requireArguments())
+        binding.detailsId.text = "Id"
+        binding.detailsAuthorTitle.text = "author"
+        binding.detailsDate.text = "02/03/2021"
+        binding.detailsAddress.text = "address"
+        binding.detailsPatientName.text = "name : Ana"
+        binding.detailsPatientDob.text = "dob: 2nd march"
+        binding.detailsDose.text = "dose"
+        binding.detailsResourceId.text = "Resource ID 88"
+
         Log.d("InsideDetsComposition",arguments.ipsPatientDetail.toString())
     }
 }

@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/details_text_view"
+        android:id="@+id/details_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OPEN FRAGMENT -- to show data"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show ID"
+
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_author_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show author title"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show date"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_patient_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show patient name"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_patient_dob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show patient dob"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show details address"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_resource_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show resource id"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/details_dose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="OPEN FRAGMENT -- to show dose"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
