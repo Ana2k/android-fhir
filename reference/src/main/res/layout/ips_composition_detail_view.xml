@@ -27,35 +27,35 @@
         android:text="OPEN FRAGMENT -- to show date"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/details_patient_name"
+        android:id="@+id/section_title_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="OPEN FRAGMENT -- to show patient name"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/details_patient_dob"
+        android:id="@+id/section_title_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="OPEN FRAGMENT -- to show patient dob"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/details_address"
+        android:id="@+id/section_title_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="OPEN FRAGMENT -- to show details address"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/details_resource_id"
+        android:id="@+id/section_title_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="OPEN FRAGMENT -- to show resource id"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/details_dose"
+        android:id="@+id/section_title_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"

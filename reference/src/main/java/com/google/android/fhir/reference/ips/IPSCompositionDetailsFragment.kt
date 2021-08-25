@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.fhir.reference.PatientDetailsFragmentArgs
 import com.google.android.fhir.reference.databinding.IpsCompositionDetailViewBinding
@@ -35,14 +34,14 @@ class IPSCompositionDetailsFragment: Fragment() {
         //extract the argument files.
         //make a textview. text
         //then show that in those
-        binding.detailsId.text = "Id"
-        binding.detailsAuthorTitle.text = "author"
-        binding.detailsDate.text = "02/03/2021"
-        binding.detailsAddress.text = "address"
-        binding.detailsPatientName.text = "name : Ana"
-        binding.detailsPatientDob.text = "dob: 2nd march"
-        binding.detailsDose.text = "dose"
-        binding.detailsResourceId.text = "Resource ID 88"
+        binding.detailsId.text = item.id
+        binding.detailsAuthorTitle.text = item.author.toString()
+        binding.detailsDate.text = item.date.toString()
+        binding.sectionTitle0.text = item.section[0].title
+        binding.sectionTitle1.text = item.section[1].title
+        binding.sectionTitle2.text = item.section[2].title
+        binding.sectionTitle3.text = item.section[3].title
+        binding.sectionTitle4.text = item.section[4].title
 
         Log.d("InsideDetsComposition",arguments.ipsPatientDetail.toString())
     }
