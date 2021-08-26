@@ -1,65 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/details_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show ID"
+        android:text="ID"
 
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/details_author_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show author title"
+        android:text="author title"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/details_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show date"
+        android:text="date"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/section_title_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show patient name"
+        android:text="patient name"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/section_title_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show patient dob"
+        android:text="patient dob"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/section_title_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show details address"
+        android:text="details address"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/section_title_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show resource id"
+        android:text="resource id"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/section_title_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="OPEN FRAGMENT -- to show dose"
+        android:text="dose"
         tools:ignore="MissingConstraints" />
 
 
